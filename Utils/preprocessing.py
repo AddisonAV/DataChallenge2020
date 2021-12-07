@@ -19,3 +19,12 @@ def get_file_names(folder_path):
     
     
     return file_names
+
+def fix_invalid_rows(dataset):
+    """
+    This function fix invalid rows in a dataset
+    """
+
+    return dataset.fillna(dataset.mean())
+
+
