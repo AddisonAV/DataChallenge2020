@@ -2,7 +2,7 @@ import os
 import pandas as pd
 
 
-def get_file_names(folder_path,returns=True):
+def get_file_names(folder_path):
     """This function obtain a list of all files inside a specific folder
 
     Args:
@@ -10,10 +10,7 @@ def get_file_names(folder_path,returns=True):
 
     Returns:
         list: list of files inside directory
-    """
-    
-    old_path = os.getcwd()
-    
+    """    
 
     # Obtain files inside directory
     file_names = os.listdir(os.path.join(folder_path))
