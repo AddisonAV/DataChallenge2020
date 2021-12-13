@@ -21,6 +21,14 @@ def remove_outliers(data_frame):
 
     return dataframe.loc[dataframe['cluster'] != denser_cluster]
 
+def prepare_training_datasets(large_datasets, small_datasets, extra_info):
+
+    large_size = len(large_datasets)
+    small_size = len(small_datasets)
+
+    particle_size = extra_info['Particle_Size(micron']
+
+
 
 
 def get_file_names(folder_path):
