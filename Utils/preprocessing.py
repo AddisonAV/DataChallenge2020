@@ -1,6 +1,26 @@
 import os
 import pandas as pd
 import numpy as np
+from sklearn.cluster import DBSCAN
+from collections import Counter
+
+def db_scan(data_frame, eps = 8, min_samples = 3):
+    dataframe = data_frame.copy()
+    df_aux = dataframe.drop(['Upstream_Pressure(psi)', 'Downstream_Pressure(psi)'], axis = 1)
+    db = DBSCAN(eps = eps)
+    labels = db.fit_predict(df_aux)
+    dataframe['cluster'] = labels
+    return dataframe
+    
+
+def remove_outliers(data_frame):
+    dataframe = data_frame.copy()
+    clusters = np.array(dataframe['cluster'])
+    counts = np.bincount(clusters)
+    denser_cluster = np.argmax(counts)
+
+    return dataframe.loc[dataframe['cluster'] != denser_cluster]
+
 
 
 def get_file_names(folder_path):
